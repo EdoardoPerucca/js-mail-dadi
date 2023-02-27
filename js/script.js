@@ -24,19 +24,26 @@ buttonEmailEl.addEventListener('click', function() {
 
     for(let i = 0; i < listaMailEl.length; i++) {
         
-        if(listaMailEl[i] == checkMailEl) {
-            document.getElementById('mailKo').innerhtml = 'Ci dispiace, questa email non esiste';
-            console.log('mailOk');
-
-        } else {
-            document.getElementById('mailOk').innerHTML = 'Complimenti, puoi accedere';
-            console.log('mailOk');
-        }
-            
+        if(listaMailEl[i] == checkMailEl.value) {
+            mail = true;
+        } 
         
     }
 
+    document.getElementById("message").style.display = "block";
+    
+    if(mail == true) {
+        
+        document.getElementById('mailOk').innertext = 'Congratulazioni';
+        console.log('mailOk');
 
+    } else {
+
+        document.getElementById('mailKo').innertext = 'Ci dispiace';
+        console.log('mailKo');
+
+    }
+    
 
 })
 
