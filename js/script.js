@@ -17,10 +17,12 @@ let buttonEmailEl = document.getElementById('buttonEmail');
 let listaMailEl = ['edoardo@libero.it', 'perucca@libero.it', 'edoardo.perucca@libero.it', 'perucca.edoardo@libero.it'];
 console.log(listaMailEl);
 
-let mail = false;
+let messageEl = document.getElementById('message');
 
 
 buttonEmailEl.addEventListener('click', function() {
+
+    let mail = false;
 
     for(let i = 0; i < listaMailEl.length; i++) {
         
@@ -30,23 +32,64 @@ buttonEmailEl.addEventListener('click', function() {
         
     }
 
-    document.getElementById("message").style.display = "block";
+    
     
     if(mail == true) {
         
-        document.getElementById('mailOk').innertext = 'Congratulazioni';
-        console.log('mailOk');
+        messageEl.innerText = 'Sei registrato, benvenuto';
+        
 
     } else {
 
-        document.getElementById('mailKo').innertext = 'Ci dispiace';
-        console.log('mailKo');
-
+        messageEl.innerText = 'Ci dispiace, email inesistente';
+        
     }
     
 
 })
 
+
+//----------------------------
+
+
+let user = 'Player';
+
+let computerScore
+
+let userScore
+
+let resultEl = document.getElementById('result');
+
+let diceMessageEl = document.getElementById('diceMessage');
+
+let computerMessageEl = document.getElementById('computerMessage');
+
+let diceButtonEl = document.getElementById('diceButton');
+
+
+diceButtonEl.addEventListener('click', function(){
+
+  let userScore = Math.floor(Math.random() * 6) + 1;
+  console.log(user +' hai realizzato '+ userScore +" punti");
+    diceMessageEl.innerText = (user +' hai realizzato '+ userScore +" punti");
+   
+
+  let computerScore = Math.floor(Math.random() * 6) + 1;
+  console.log('Il computer ha realizzato '+ computerScore +" punti");
+    computerMessageEl.innerText = ('Il computer ha realizzato '+ computerScore +" punti");
+  
+
+  if(userScore > computerScore) {
+    resultEl.innerText = ('Hai vinto!');    
+    
+  }else if (userScore == computerScore) {
+    resultEl.innerText = ('Pareggio');
+
+  }else {
+    resultEl.innerText = ('Hai perso!');
+  }
+
+})
 
 
 
